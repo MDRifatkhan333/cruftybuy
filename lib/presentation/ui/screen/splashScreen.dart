@@ -1,3 +1,4 @@
+import 'package:cruftybuy/presentation/ui/screen/homeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -9,6 +10,20 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    goToNextScreen();
+  }
+  void goToNextScreen() {
+    Future.delayed(const Duration(seconds: 3), () {
+      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) {
+        return const MyhomeScreen();
+      
+      },), (route) => false);
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
