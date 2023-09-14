@@ -1,3 +1,4 @@
+import 'package:cruftybuy/presentation/ui/screen/auth/email_verification_screen.dart';
 import 'package:cruftybuy/presentation/ui/screen/homeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -17,27 +18,19 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     goToNextScreen();
   }
+
   void goToNextScreen() {
-    // Future.delayed(const Duration(seconds: 3), () {
-    //   Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) {
-    //     return const MyhomeScreen();
-      
-    //   },), (route) => false);
-    // });
     // using getx
-    Future.delayed(const Duration(seconds: 3)).then((value)
-     {
-      Get.offAll(() => const MyhomeScreen());
-    
-     });
+    Future.delayed(const Duration(seconds: 3)).then((value) {
+      Get.offAll(() => const EmailVerificationScreen());
+    });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        
-        
         children: [
           const Spacer(),
           Center(
@@ -59,6 +52,5 @@ class _SplashScreenState extends State<SplashScreen> {
         ],
       ),
     );
-    
   }
 }

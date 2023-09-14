@@ -1,4 +1,6 @@
 import 'package:cruftybuy/application/app.dart';
+import 'package:cruftybuy/presentation/ui/screen/splashScreen.dart';
+import 'package:cruftybuy/presentation/ui/utlity/appcolor.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,11 +17,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-       
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        primarySwatch:
+            MaterialColor(AppColors.primaryColor.value, AppColors().color),
       ),
-      home: const MyHomePage(),
+      home: const SplashScreen(),
     );
   }
 }
