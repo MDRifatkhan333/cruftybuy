@@ -1,6 +1,7 @@
 import 'package:cruftybuy/presentation/ui/screen/homeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -17,12 +18,18 @@ class _SplashScreenState extends State<SplashScreen> {
     goToNextScreen();
   }
   void goToNextScreen() {
-    Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) {
-        return const MyhomeScreen();
+    // Future.delayed(const Duration(seconds: 3), () {
+    //   Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) {
+    //     return const MyhomeScreen();
       
-      },), (route) => false);
-    });
+    //   },), (route) => false);
+    // });
+    // using getx
+    Future.delayed(const Duration(seconds: 3)).then((value)
+     {
+      Get.offAll(() => const MyhomeScreen());
+    
+     });
   }
   @override
   Widget build(BuildContext context) {
