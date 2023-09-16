@@ -1,3 +1,4 @@
+import 'package:cruftybuy/presentation/ui/screen/auth/otp_verification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -59,7 +60,13 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => OTPVerification(),
+                      ));
+                },
                 child: const Text('Next'),
               ),
             ),
