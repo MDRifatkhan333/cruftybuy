@@ -1,5 +1,7 @@
+import 'package:cruftybuy/presentation/ui/utlity/appcolor.dart';
 import 'package:cruftybuy/presentation/ui/utlity/imageAssets.dart';
 import 'package:cruftybuy/presentation/ui/widget/circularIconButton.dart';
+import 'package:cruftybuy/presentation/ui/widget/home/homeSlider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -62,6 +64,7 @@ class _MyhomeScreenState extends State<MyhomeScreen> {
               const SizedBox(
                 height: 10,
               ),
+              const HomeSlider(),
             ],
           ),
         ),
