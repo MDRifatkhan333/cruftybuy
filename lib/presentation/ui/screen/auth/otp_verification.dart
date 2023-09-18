@@ -1,9 +1,9 @@
-import 'dart:math';
-
+import 'package:cruftybuy/presentation/ui/screen/complete_profile_screen.dart';
 import 'package:cruftybuy/presentation/ui/utlity/appcolor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:get/get.dart';
 
 class OTPVerification extends StatefulWidget {
   const OTPVerification({super.key});
@@ -95,7 +95,9 @@ class _OTPVerificationState extends State<OTPVerification> {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.offAll(() => const COmpleteProfileScreen());
+                  },
                   child: const Text('Next'),
                 ),
               ),
