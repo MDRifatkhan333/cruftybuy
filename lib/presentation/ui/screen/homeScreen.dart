@@ -15,32 +15,57 @@ class _MyhomeScreenState extends State<MyhomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Colors.white,
-          elevation: 0,
-          title: Row(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        title: Row(
+          children: [
+            SvgPicture.asset(ImagesAssets.cruftybuyNavLogo),
+            const Spacer(),
+            circularIcon(
+              icon: Icons.person_2_outlined,
+              onTap: () {},
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            circularIcon(
+              icon: Icons.call_outlined,
+              onTap: () {},
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            circularIcon(
+              icon: Icons.notifications_active_outlined,
+              onTap: () {},
+            ),
+          ],
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
             children: [
-              SvgPicture.asset(ImagesAssets.cruftybuyNavLogo),
-              const Spacer(),
-              circularIcon(
-                icon: Icons.person_2_outlined,
-                onTap: () {},
+              TextField(
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(
+                    Icons.search,
+                    size: 30,
+                  ),
+                  hintText: 'Search',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
               ),
               const SizedBox(
-                width: 10,
-              ),
-              circularIcon(
-                icon: Icons.call_outlined,
-                onTap: () {},
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              circularIcon(
-                icon: Icons.notifications_active_outlined,
-                onTap: () {},
+                height: 10,
               ),
             ],
-          )),
+          ),
+        ),
+      ),
     );
   }
 }
