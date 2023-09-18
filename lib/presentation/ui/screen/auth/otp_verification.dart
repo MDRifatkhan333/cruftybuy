@@ -1,4 +1,4 @@
-import 'package:cruftybuy/presentation/ui/screen/complete_profile_screen.dart';
+import 'package:cruftybuy/presentation/ui/screen/auth/complete_profile_screen.dart';
 import 'package:cruftybuy/presentation/ui/utlity/appcolor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
