@@ -1,7 +1,9 @@
-import 'package:cruftybuy/presentation/ui/utlity/appcolor.dart';
 import 'package:cruftybuy/presentation/ui/utlity/imageAssets.dart';
+import 'package:cruftybuy/presentation/ui/widget/catagoriecard.dart';
 import 'package:cruftybuy/presentation/ui/widget/circularIconButton.dart';
+import 'package:cruftybuy/presentation/ui/widget/home/catagoriesTitle.dart';
 import 'package:cruftybuy/presentation/ui/widget/home/homeSlider.dart';
+import 'package:cruftybuy/presentation/ui/widget/home/productCard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -65,6 +67,72 @@ class _MyhomeScreenState extends State<MyhomeScreen> {
                 height: 10,
               ),
               const HomeSlider(),
+              const SizedBox(
+                height: 10,
+              ),
+              catagoriTitle(
+                title: "All Catagories",
+                onTap: () {},
+              ),
+              SizedBox(
+                height: 110,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 4,
+                  itemBuilder: (context, index) {
+                    return const catagoriCard();
+                  },
+                  shrinkWrap: true,
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              catagoriTitle(
+                title: "Popular",
+                onTap: () {},
+              ),
+              SizedBox(
+                height: 165,
+                child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 10,
+                    itemBuilder: (context, index) {
+                      return const productcard();
+                    }),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              catagoriTitle(
+                title: "Special",
+                onTap: () {},
+              ),
+              SizedBox(
+                height: 165,
+                child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 10,
+                    itemBuilder: (context, index) {
+                      return const productcard();
+                    }),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              catagoriTitle(
+                title: "New",
+                onTap: () {},
+              ),
+              SizedBox(
+                height: 165,
+                child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 10,
+                    itemBuilder: (context, index) {
+                      return const productcard();
+                    }),
+              ),
             ],
           ),
         ),
