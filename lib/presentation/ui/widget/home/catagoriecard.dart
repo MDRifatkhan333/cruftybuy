@@ -30,10 +30,10 @@ class catagoriCard extends StatelessWidget {
           ),
         ),
         const SizedBox(
-          height: 10,
+          height: 1,
         ),
         const Text(
-          "Food",
+          "Electronics",
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,

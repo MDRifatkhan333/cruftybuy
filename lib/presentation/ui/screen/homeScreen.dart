@@ -1,11 +1,13 @@
+import 'package:cruftybuy/presentation/ui/screen/CatagoriesScreen.dart';
 import 'package:cruftybuy/presentation/ui/utlity/imageAssets.dart';
-import 'package:cruftybuy/presentation/ui/widget/catagoriecard.dart';
+import 'package:cruftybuy/presentation/ui/widget/home/catagoriecard.dart';
 import 'package:cruftybuy/presentation/ui/widget/circularIconButton.dart';
 import 'package:cruftybuy/presentation/ui/widget/home/catagoriesTitle.dart';
 import 'package:cruftybuy/presentation/ui/widget/home/homeSlider.dart';
 import 'package:cruftybuy/presentation/ui/widget/home/productCard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 class MyhomeScreen extends StatefulWidget {
   const MyhomeScreen({super.key});
@@ -72,7 +74,9 @@ class _MyhomeScreenState extends State<MyhomeScreen> {
               ),
               catagoriTitle(
                 title: "All Catagories",
-                onTap: () {},
+                onTap: () {
+                  Get.to(() => const CatagoriesScreen());
+                },
               ),
               SizedBox(
                 height: 110,

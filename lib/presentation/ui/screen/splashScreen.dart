@@ -1,4 +1,4 @@
-import 'package:cruftybuy/presentation/ui/screen/homeScreen.dart';
+import 'package:cruftybuy/presentation/ui/screen/mainNavBar.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -22,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void goToNextScreen() {
     // using getx
     Future.delayed(const Duration(seconds: 3)).then((value) {
-      Get.offAll(() => const MyhomeScreen());
+      Get.offAll(() => const MainNavBarScreen());
     });
   }
 
