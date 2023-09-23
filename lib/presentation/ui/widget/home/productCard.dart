@@ -76,7 +76,7 @@ class productcard extends StatelessWidget {
                         color: Colors.white,
                       ),
                     ),
-                  )
+                  ),
                 ],
               )
             ],
