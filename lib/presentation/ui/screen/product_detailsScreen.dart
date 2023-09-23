@@ -20,7 +20,9 @@ class _ProductDetasilScreenState extends State<ProductDetasilScreen> {
     Colors.yellow,
     Colors.purple
   ];
+  List<String> sizes = ['S', 'M', 'L', 'XL', 'XXL'];
   int _selectedColorIndex = 0;
+  int _selectedSizeIndex = 0;
 
   get n => null;
   @override
@@ -171,7 +173,67 @@ class _ProductDetasilScreenState extends State<ProductDetasilScreen> {
                         );
                       },
                     ),
-                  )
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.01,
+                  ),
+                  const Text(
+                    'Size',
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  SizedBox(
+                    height: 30,
+                    child: ListView.separated(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: sizes.length,
+                      itemBuilder: (context, index) {
+                        return InkWell(
+                            onTap: () {
+                              _selectedSizeIndex = index;
+                              if (mounted) {
+                                setState(() {});
+                              }
+                            },
+                            child: CircleAvatar(
+                              child: Container(
+                                child: Text(
+                                  sizes[index],
+                                  style: TextStyle(
+                                      color: _selectedSizeIndex == index
+                                          ? Colors.white
+                                          : Colors.black),
+                                ),
+                              ),
+                            ));
+                      },
+                      separatorBuilder: (context, index) {
+                        return const SizedBox(
+                          width: 10,
+                        );
+                      },
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  const Text(
+                    'Description',
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  const Text(
+                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget fermentum aliquet, nisl nibh ultricies nunc, eget aliquam diam nisl quis magn ')
                 ],
               ),
             ),
