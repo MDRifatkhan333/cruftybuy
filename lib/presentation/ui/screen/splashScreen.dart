@@ -1,3 +1,4 @@
+import 'package:cruftybuy/presentation/ui/screen/createReviewScreen.dart';
 import 'package:cruftybuy/presentation/ui/screen/mainNavBar.dart';
 import 'package:cruftybuy/presentation/ui/screen/product_detailsScreen.dart';
 
@@ -23,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void goToNextScreen() {
     // using getx
     Future.delayed(const Duration(seconds: 3)).then((value) {
-      Get.offAll(() => const ProductDetasilScreen());
+      Get.offAll(() => const CreateReviewScreen());
     });
   }
 
