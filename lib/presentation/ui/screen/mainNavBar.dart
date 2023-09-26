@@ -1,3 +1,4 @@
+import 'package:cruftybuy/presentation/ui/cardScreen.dart';
 import 'package:cruftybuy/presentation/ui/screen/CatagoriesScreen.dart';
 import 'package:cruftybuy/presentation/ui/screen/homeScreen.dart';
 import 'package:cruftybuy/presentation/ui/screen/wish_list_screen.dart';
@@ -17,7 +18,7 @@ class _MainNavBarScreenState extends State<MainNavBarScreen> {
   final List<Widget> _screen = [
     const MyhomeScreen(),
     const CatagoriesScreen(),
-    const MyhomeScreen(),
+    const CartScreen(),
     const MyWishListScreen(),
   ];
   @override
