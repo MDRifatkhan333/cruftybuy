@@ -1,3 +1,4 @@
+import 'package:cruftybuy/data/service/emailVerification_controller.dart';
 import 'package:cruftybuy/presentation/ui/screen/auth/otp_verification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -74,22 +75,44 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                   height: 12,
                 ),
                 SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        Get.to(() => const OTPVerification());
-                      }
-                      emailController.clear();
-                    },
-                    child: const Text('Next'),
-                  ),
-                ),
+                    // width: double.infinity,
+                    // child: GetBuilder<EmailVerificationController>(
+                    //     builder: (controller) {
+                    //   if (controller.emailVerificationInProgress) {
+                    //     return const Center(
+                    //       child: CircularProgressIndicator(),
+                    //     );
+                    //   }
+                    //   return ElevatedButton(
+                    //     onPressed: () async {
+                    //       if (_formKey.currentState!.validate()) {
+                    //         emailVerify(controller);
+                    //       }
+                    //     },
+                    //     child: const Text('Next'),
+                    //   );
+                    // }),
+                    ),
               ],
             ),
           ),
         )),
       ),
     );
+  }
+
+  Future<void> emailVerify(EmailVerificationController controller) async {
+    final response = await controller.verifyEmail(emailController.text.trim());
+    if (response) {
+      Get.to(() => const OTPVerification());
+    } else {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Email verification failed! Try again'),
+          ),
+        );
+      }
+    }
   }
 }
