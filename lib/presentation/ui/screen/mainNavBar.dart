@@ -16,7 +16,7 @@ class MainNavBarScreen extends StatefulWidget {
 }
 
 class _MainNavBarScreenState extends State<MainNavBarScreen> {
-  // MainNavContoler mainNavContoler = Get.put(MainNavContoler());
+  MainNavContoler mainNavContoler = Get.put(MainNavContoler());
 
   final List<Widget> _screen = [
     const MyhomeScreen(),

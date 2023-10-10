@@ -2,6 +2,7 @@ import 'package:cruftybuy/application/app.dart';
 import 'package:cruftybuy/presentation/ui/screen/auth/email_verification_screen.dart';
 import 'package:cruftybuy/presentation/ui/screen/homeScreen.dart';
 import 'package:cruftybuy/presentation/ui/screen/mainNavBar.dart';
+import 'package:cruftybuy/presentation/ui/screen/product_detailsScreen.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -25,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void goToNextScreen() {
     // using getx
     Future.delayed(const Duration(seconds: 3)).then((value) {
-      Get.offAll(() => const MainNavBarScreen());
+      Get.offAll(() => const EmailVerificationScreen());
     });
   }
 

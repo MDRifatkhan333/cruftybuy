@@ -15,7 +15,7 @@ class _CatagoriesScreenState extends State<CatagoriesScreen> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        Get.find<MainNavContoler>().changeScreenToHome();
+        Get.find<MainNavContoler>().changeScreen(0);
         return false;
       },
       child: Scaffold(
@@ -26,7 +26,7 @@ class _CatagoriesScreenState extends State<CatagoriesScreen> {
           ),
           leading: IconButton(
               onPressed: () {
-                Get.find<MainNavContoler>().changeScreenToHome();
+                Get.find<MainNavContoler>().changeScreen(0);
               },
               icon: const Icon(
                 Icons.arrow_back,

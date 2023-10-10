@@ -1,3 +1,4 @@
+import 'package:cruftybuy/presentation/state_holders/main_nav_controler.dart';
 import 'package:cruftybuy/presentation/ui/screen/CatagoriesScreen.dart';
 import 'package:cruftybuy/presentation/ui/utlity/imageAssets.dart';
 import 'package:cruftybuy/presentation/ui/widget/home/catagoriecard.dart';
@@ -75,7 +76,7 @@ class _MyhomeScreenState extends State<MyhomeScreen> {
               catagoriTitle(
                 title: "All Catagories",
                 onTap: () {
-                  Get.to(() => const CatagoriesScreen());
+                  Get.find<MainNavContoler>().changeScreen(1);
                 },
               ),
               SizedBox(

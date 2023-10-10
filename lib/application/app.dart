@@ -8,10 +8,10 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const SplashScreen(),
-      initialBinding: StateHolderBinder(),
+      home: SplashScreen(),
+      //initialBinding: StateHolderBinder(),
     );
   }
 }

@@ -14,7 +14,7 @@ class EmailVerificationScreen extends StatefulWidget {
 
 class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
   TextEditingController emailController = TextEditingController();
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,6 +70,18 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                       return null;
                     }
                   },
+                ),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        Get.to(() => const OTPVerification());
+                      }
+                      emailController.clear();
+                    },
+                    child: const Text('Next', style: TextStyle(fontSize: 16)),
+                  ),
                 ),
                 const SizedBox(
                   height: 12,
