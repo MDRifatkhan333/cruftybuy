@@ -1,4 +1,4 @@
-import 'package:cruftybuy/data/service/emailVerification_controller.dart';
+import 'package:cruftybuy/presentation/state_holders/emailVerification_controller.dart';
 import 'package:cruftybuy/presentation/state_holders/main_nav_controler.dart';
 import 'package:get/get.dart';
 

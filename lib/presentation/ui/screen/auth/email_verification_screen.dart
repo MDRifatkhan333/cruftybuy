@@ -1,4 +1,4 @@
-import 'package:cruftybuy/data/service/emailVerification_controller.dart';
+import 'package:cruftybuy/presentation/state_holders/emailVerification_controller.dart';
 import 'package:cruftybuy/presentation/ui/screen/auth/otp_verification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -15,6 +15,8 @@ class EmailVerificationScreen extends StatefulWidget {
 class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
   TextEditingController emailController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  EmailVerificationController emailVerificationController =
+      Get.put(EmailVerificationController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,15 +75,23 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                 ),
                 SizedBox(
                   width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        Get.to(() => const OTPVerification());
-                      }
-                      emailController.clear();
-                    },
-                    child: const Text('Next', style: TextStyle(fontSize: 16)),
-                  ),
+                  child: GetBuilder<EmailVerificationController>(
+                      builder: (controller) {
+                    if (controller.emailVerificationInProgress) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                    return ElevatedButton(
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          emailVerify(controller);
+                        }
+                        emailController.clear();
+                      },
+                      child: const Text('Next', style: TextStyle(fontSize: 16)),
+                    );
+                  }),
                 ),
                 const SizedBox(
                   height: 12,

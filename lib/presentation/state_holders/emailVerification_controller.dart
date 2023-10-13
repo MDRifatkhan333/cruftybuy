@@ -22,7 +22,7 @@ class EmailVerificationController extends GetxController {
       _message = response.responseJson?['data'] ?? '';
       return true;
     } else {
-      _message = response.responseJson?['data'] ?? '';
+      //_message = response.responseJson?['data'] ?? '';
       return false;
     }
   }
