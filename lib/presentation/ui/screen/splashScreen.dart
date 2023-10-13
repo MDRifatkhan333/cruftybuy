@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void goToNextScreen() {
     // using getx
     Future.delayed(const Duration(seconds: 3)).then((value) {
-      Get.offAll(() => const EmailVerificationScreen());
+      Get.offAll(() => const MainNavBarScreen());
     });
   }
 
