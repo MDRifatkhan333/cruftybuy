@@ -1,143 +1,154 @@
-import 'package:cruftybuy/presentation/ui/screen/auth/complete_profile_screen.dart';
+import 'package:cruftybuy/presentation/state_holders/otp_verification_controller.dart';
+import 'package:cruftybuy/presentation/ui/screen/main_bottom_nav_screen.dart';
 import 'package:cruftybuy/presentation/ui/utlity/appcolor.dart';
+import 'package:cruftybuy/presentation/ui/utlity/imageAssets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 
-class OTPVerification extends StatefulWidget {
-  const OTPVerification({super.key});
+class OTPVerificationScreen extends StatefulWidget {
+  final String email;
+  const OTPVerificationScreen({Key? key, required this.email})
+      : super(key: key);
 
   @override
-  State<OTPVerification> createState() => _OTPVerificationState();
+  State<OTPVerificationScreen> createState() => _OTPVerificationScreenState();
 }
 
-class _OTPVerificationState extends State<OTPVerification> {
+class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
+  final TextEditingController _otpTEController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: SafeArea(
-            child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 100,
-              ),
-              Center(
-                child: SvgPicture.asset(
-                  'assets/images/logo.svg',
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 80,
                 ),
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              Text(
-                'Enter OTP code',
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontSize: 26,
-                    ),
-              ),
-              const SizedBox(
-                height: 12,
-              ),
-              Text('A 4 digit code has been sent',
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        fontSize: 16,
-                      )),
-              const SizedBox(
-                height: 12,
-              ),
-              PinCodeTextField(
-                length: 4,
-                obscureText: false,
-                animationType: AnimationType.fade,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                keyboardType: TextInputType.number,
-                pinTheme: PinTheme(
-                  shape: PinCodeFieldShape.box,
-                  borderRadius: BorderRadius.circular(5),
-                  fieldHeight: 50,
-                  fieldWidth: 40,
-                  activeFillColor: Colors.white,
-                  activeColor: Colors.white,
-                  selectedColor: AppColors.primaryColor,
-                  selectedFillColor: Colors.white,
-                  inactiveColor: AppColors.primaryColor,
-                ),
-                animationDuration: Duration(milliseconds: 300),
-                backgroundColor: Colors.white,
-                enableActiveFill: false,
-
-                // errorAnimationController: errorController,
-                // controller: textEditingController,
-                onCompleted: (v) {
-                  //print("Completed");
-                },
-                onChanged: (value) {
-                  // print(value);
-                  // setState(() {
-                  //   currentText = value;
-                  // });
-                },
-                beforeTextPaste: (text) {
-                  print("Allowing to paste $text");
-                  //if you return true then it will show the paste confirmation dialog. Otherwise if false, then nothing will happen.
-                  //but you can show anything you want here, like your pop up saying wrong paste format or etc
-                  return true;
-                },
-                appContext: context,
-              ),
-              const SizedBox(
-                height: 12,
-              ),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Get.offAll(() => const COmpleteProfileScreen());
-                  },
-                  child: const Text('Next'),
-                ),
-              ),
-              const SizedBox(
-                height: 12,
-              ),
-              RichText(
-                text: TextSpan(
-                  text: 'This code will expire in',
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        fontSize: 16,
-                      ),
-                  children: [
-                    TextSpan(
-                      text: '120s',
-                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                            fontSize: 16,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                    )
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 12,
-              ),
-              TextButton(
-                onPressed: () {},
-                child: const Text(
-                  'Resend Code',
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.grey,
+                Center(
+                  child: SvgPicture.asset(
+                    ImageAssets.craftyBayLogoSVG,
+                    width: 100,
                   ),
                 ),
-              ),
-            ],
+                const SizedBox(
+                  height: 16,
+                ),
+                Text(
+                  'Enter your OTP code',
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        fontSize: 24,
+                      ),
+                ),
+                const SizedBox(
+                  height: 4,
+                ),
+                Text('A 4 digit OTP code has been sent',
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleMedium
+                        ?.copyWith(color: Colors.grey)),
+                const SizedBox(
+                  height: 24,
+                ),
+                PinCodeTextField(
+                  controller: _otpTEController,
+                  length: 6,
+                  obscureText: false,
+                  animationType: AnimationType.fade,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  keyboardType: TextInputType.number,
+                  pinTheme: PinTheme(
+                    shape: PinCodeFieldShape.box,
+                    borderRadius: BorderRadius.circular(5),
+                    fieldHeight: 50,
+                    fieldWidth: 50,
+                    activeFillColor: Colors.white,
+                    inactiveFillColor: Colors.white,
+                    selectedFillColor: Colors.white,
+                    activeColor: AppColors.primaryColor,
+                    inactiveColor: AppColors.primaryColor,
+                    selectedColor: Colors.green,
+                  ),
+                  animationDuration: const Duration(milliseconds: 300),
+                  enableActiveFill: true,
+                  onCompleted: (v) {},
+                  onChanged: (value) {},
+                  beforeTextPaste: (text) {
+                    return true;
+                  },
+                  appContext: context,
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                SizedBox(
+                  width: double.infinity,
+                  child: GetBuilder<OtpVerificationController>(
+                      builder: (controller) {
+                    if (controller.otpVerificationInProgress) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                    return ElevatedButton(
+                      onPressed: () {
+                        verifyOtp(controller);
+                      },
+                      child: const Text('Next'),
+                    );
+                  }),
+                ),
+                const SizedBox(
+                  height: 24,
+                ),
+                RichText(
+                  text: const TextSpan(
+                    style: TextStyle(color: Colors.grey),
+                    children: [
+                      TextSpan(text: 'This code will expire in '),
+                      TextSpan(
+                        text: '120s',
+                        style: TextStyle(
+                          color: AppColors.primaryColor,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {},
+                  style: TextButton.styleFrom(foregroundColor: Colors.grey),
+                  child: const Text('Resend'),
+                ),
+              ],
+            ),
           ),
-        )),
+        ),
       ),
     );
+  }
+
+  Future<void> verifyOtp(OtpVerificationController controller) async {
+    final response =
+        await controller.verifyOtp(widget.email, _otpTEController.text.trim());
+    if (response) {
+      Get.offAll(() => const MainBottomNavScreen());
+    } else {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Otp verification failed! Try again'),
+          ),
+        );
+      }
+    }
   }
 }

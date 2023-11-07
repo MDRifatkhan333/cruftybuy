@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         primarySwatch:
             MaterialColor(AppColors.primaryColor.value, AppColors().color),
       ),
-      home: const MyHomePage(),
+      home: const CraftyBay(),
     );
   }
 }
